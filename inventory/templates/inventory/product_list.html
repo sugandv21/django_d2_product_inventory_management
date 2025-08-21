@@ -1,0 +1,23 @@
+{% extends "inventory/base.html" %}
+
+{% block title %}Product List - Inventory{% endblock %}
+
+{% block content %}
+    <h2>In-Stock Products</h2>
+    <ul>
+        {% for product in products_in_stock %}
+            <li>{{ product.name }} - {{ product.quantity }} available (₹{{ product.price }})</li>
+        {% empty %}
+            <p>No products in stock.</p>
+        {% endfor %}
+    </ul>
+
+    <h2>Out-of-Stock Products</h2>
+    <ul>
+        {% for product in products_out_stock %}
+            <li>{{ product.name }} (Price: ₹{{ product.price }})</li>
+        {% empty %}
+            <p>No products out of stock.</p>
+        {% endfor %}
+    </ul>
+{% endblock %}
